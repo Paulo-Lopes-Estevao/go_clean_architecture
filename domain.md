@@ -39,7 +39,7 @@ Saida de 1 numero de vagas aumenta 1
             10.000.00
         </td>
         <td>
-            1 dia
+            24 horas
         </td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@ Saida de 1 numero de vagas aumenta 1
             5.000.00
         </td>
         <td>
-            1 dia
+            24 horas
         </td>
     </tr>
     <tr>
@@ -61,7 +61,7 @@ Saida de 1 numero de vagas aumenta 1
         2.500.00
     </td>
     <td>
-        1 dia
+        24 horas
     </td>
 </tr>
     
