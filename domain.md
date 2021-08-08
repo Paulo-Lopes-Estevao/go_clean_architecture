@@ -11,11 +11,9 @@
 
 Preenchimento de 1 ocupa 1.
 
-Totaliza
 
-Saida de 1 numero de vagas aumenta
+Saida de 1 numero de vagas aumenta 1
 
-Totaliza
 
 
 # Carro
@@ -57,3 +55,9 @@ Totaliza
     
     
 </table>
+
+
+<br>
+<br>
+
+## Continuando ...
