@@ -27,6 +27,9 @@ Saida de 1 numero de vagas aumenta 1
         <th>
             Preço
         </th>
+        <th>
+            Time
+        </th>
     </tr>
     <tr>
         <td>
@@ -34,6 +37,9 @@ Saida de 1 numero de vagas aumenta 1
         </td>
         <td>
             10.000.00
+        </td>
+        <td>
+            1 dia
         </td>
     </tr>
     <tr>
@@ -43,6 +49,9 @@ Saida de 1 numero de vagas aumenta 1
         <td>
             5.000.00
         </td>
+        <td>
+            1 dia
+        </td>
     </tr>
     <tr>
     <td>
@@ -50,6 +59,9 @@ Saida de 1 numero de vagas aumenta 1
     </td>
     <td>
         2.500.00
+    </td>
+    <td>
+        1 dia
     </td>
 </tr>
     
