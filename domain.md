@@ -9,6 +9,8 @@
 
 <br>
 
+vagas não podem ser superior ao limite do Park
+
 Preenchimento de 1 ocupa 1.
 
 
@@ -33,18 +35,7 @@ Saida de 1 numero de vagas aumenta 1
     </tr>
     <tr>
         <td>
-            Camião
-        </td>
-        <td>
-            10.000.00
-        </td>
-        <td>
-            24 horas
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Autocarro
+            pesado
         </td>
         <td>
             5.000.00
