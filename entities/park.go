@@ -1,6 +1,8 @@
 package entities
 
-import "errors"
+import (
+	"errors"
+)
 
 type Park struct {
 	Name string
@@ -10,12 +12,6 @@ type ParkVague struct {
 	Park  Park
 	Vague int32
 	Limit int32
-}
-
-type ParkVagueType struct {
-	Type  string
-	Price float32
-	Time  int32
 }
 
 func NewPark() *ParkVague {
