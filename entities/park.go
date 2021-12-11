@@ -42,5 +42,9 @@ func (park *ParkVague) IsValidLimitPark() error {
 	if park.Vague > park.Limit {
 		return errors.New("vague upper limit")
 	}
+
+	if park.Vague <= 2 {
+		return errors.New("vague inválid")
+	}
 	return nil
 }
