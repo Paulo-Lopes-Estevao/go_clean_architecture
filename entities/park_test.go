@@ -13,3 +13,15 @@ func TestRegitrePark(t *testing.T) {
 	park.Vague = 7
 	assert.Nil(t, park.IsValidLimitPark(), park.IsValidLimitPark())
 }
+
+func TestParkVagueAvaliable(t *testing.T) {
+	park := ParkVague{
+		Park:  Park{"Viana Park"},
+		Limit: 10,
+		Vague: 3,
+	}
+
+	result, err := park.AvailableVacancies()
+	assert.Less(t, result, park.Vague)
+	assert.Nil(t, err, err)
+}
