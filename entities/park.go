@@ -25,6 +25,13 @@ func (park *ParkVague) getVerifyVague() error {
 	return nil
 }
 
+func (park *ParkVague) AvailableVacancies() (int32, error) {
+	err := park.getVerifyVague()
+	if err != nil {
+		return 0, err
+	}
+	result := park.Vague - 1
+	return result, nil
 }
 
 func (park *ParkVague) IsValidLimitPark() error {
