@@ -18,7 +18,12 @@ func NewPark() *ParkVague {
 	return &ParkVague{}
 }
 
-func (park *ParkVague) AvailableVacancies(vague int) {
+func (park *ParkVague) getVerifyVague() error {
+	if park.Vague <= 1 {
+		return errors.New("exceeded the limit")
+	}
+	return nil
+}
 
 }
 
