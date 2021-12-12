@@ -64,3 +64,31 @@ func TestNewParkNotActivedLowerLimit(t *testing.T) {
 	assert.Equal(t, outputExpected, outputPark)
 
 }
+
+func TestNewParkNotActivedVagueUpperLimit(t *testing.T) {
+	input := usecase.ParkDtoInput{
+		Name:  "Viana Park",
+		Limit: 10,
+		Vague: 15,
+	}
+
+	outputExpected := usecase.ParkDtoOutput{
+		Status:       false,
+		ErrorMessage: "vague upper limit",
+	}
+
+	controller := gomock.NewController(t)
+	defer controller.Finish()
+
+	repositoryMockPark := repository_mock.NewMockParkRepository(controller)
+	repositoryMockPark.EXPECT().
+		Registre(input.Name, input.Limit, input.Vague, outputExpected.Status).
+		Return(nil)
+
+	usecasePark := usecase.NewParkUsecase(repositoryMockPark)
+
+	outputPark, err := usecasePark.RegistreNewPark(input)
+	assert.Nil(t, err, err)
+	assert.Equal(t, outputExpected, outputPark)
+
+}
