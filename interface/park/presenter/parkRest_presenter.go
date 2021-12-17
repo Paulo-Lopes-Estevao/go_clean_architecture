@@ -1,6 +1,6 @@
 package presenter
 
-type ParkPresenter struct {
+type ParkRestPresenter struct {
 	Name  string  `json:"name"`
 	Vague int32   `json:"vague"`
 	Limit int32   `json:"limit"`
