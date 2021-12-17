@@ -10,11 +10,11 @@ type ParkUsecaseInterface interface {
 }
 
 type parkUsecase struct {
-	Repository repository.ParkRepositoryInterface
+	repository repository.ParkRepositoryInterface
 }
 
 func NewParkUsecase(repo repository.ParkRepositoryInterface) ParkUsecaseInterface {
-	return &parkUsecase{Repository: repo}
+	return &parkUsecase{repository: repo}
 }
 
 func (usecase *parkUsecase) RegistreNewPark(input ParkDtoInput) (ParkDtoOutput, error) {
@@ -31,7 +31,7 @@ func (usecase *parkUsecase) RegistreNewPark(input ParkDtoInput) (ParkDtoOutput, 
 }
 
 func (usecase *parkUsecase) parkActived(park ParkDtoInput) (ParkDtoOutput, error) {
-	err := usecase.Repository.Registre(park.Name, park.Limit, park.Vague, true)
+	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, true)
 	if err != nil {
 		return ParkDtoOutput{}, err
 	}
@@ -45,7 +45,7 @@ func (usecase *parkUsecase) parkActived(park ParkDtoInput) (ParkDtoOutput, error
 }
 
 func (usecase *parkUsecase) parkNotActived(park ParkDtoInput, parkinvalid error) (ParkDtoOutput, error) {
-	err := usecase.Repository.Registre(park.Name, park.Limit, park.Vague, false)
+	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, false)
 	if err != nil {
 		return ParkDtoOutput{}, err
 	}
