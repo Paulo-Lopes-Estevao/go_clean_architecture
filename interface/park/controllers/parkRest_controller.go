@@ -9,6 +9,10 @@ import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
 )
 
+type ParkControllerInterface interface {
+	AddPark(ctx presenter.ParkRestPresenterContext) error
+}
+
 type ParkController struct {
 	parkUsecase usecase.ParkUsecaseInterface
 	repository  repository.ParkRepositoryInterface
@@ -22,7 +26,7 @@ func (c *ParkController) AddPark(ctx presenter.ParkRestPresenterContext) error {
 	input := &usecase.ParkDtoInput{}
 
 	if err := ctx.Bind(input); !errors.Is(err, nil) {
-		ctx.JSON(http.StatusBadRequest, ctx.ResponseData(map[string]interface{}{"error": err.Error()}))
+		ctx.JSON(http.StatusBadRequest, presenter.ResponseData(map[string]interface{}{"error": err.Error()}))
 	}
 
 	usecasepark := usecase.NewParkUsecase(c.repository)
