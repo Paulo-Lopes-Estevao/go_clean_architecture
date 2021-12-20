@@ -1,4 +1,4 @@
-package adapter
+package injection
 
 import "gorm.io/gorm"
 
