@@ -9,11 +9,6 @@ import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
 )
 
-type ParkControllerInterface interface {
-	AddPark(ctx presenter.ParkRestPresenterContext) error
-	Welcome(ctx presenter.ParkRestPresenterContext)
-}
-
 type ParkController struct {
 	parkUsecase usecase.ParkUsecaseInterface
 	repository  repository.ParkRepositoryInterface
@@ -25,7 +20,7 @@ func NewParkController(parkUsecase usecase.ParkUsecaseInterface) *ParkController
 
 func (c *ParkController) Welcome(ctx presenter.ParkRestPresenterContext) error {
 
-	return ctx.JSON(200, "... Welcome API REST")
+	return ctx.JSON(http.StatusOK, "... Welcome API REST")
 }
 
 func (c *ParkController) AddPark(ctx presenter.ParkRestPresenterContext) error {
