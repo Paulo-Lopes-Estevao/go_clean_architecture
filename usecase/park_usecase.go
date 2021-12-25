@@ -6,7 +6,7 @@ import (
 )
 
 type ParkUsecaseInterface interface {
-	RegistreNewPark(input ParkDtoInput) (ParkDtoOutput, error)
+	RegistreNewPark(input *ParkDtoInput) (ParkDtoOutput, error)
 }
 
 type parkUsecase struct {
@@ -17,7 +17,7 @@ func NewParkUsecase(repo repository.ParkRepositoryInterface) ParkUsecaseInterfac
 	return &parkUsecase{repository: repo}
 }
 
-func (usecase *parkUsecase) RegistreNewPark(input ParkDtoInput) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) RegistreNewPark(input *ParkDtoInput) (ParkDtoOutput, error) {
 	park := entities.NewPark()
 	park.Park.Name = input.Name
 	park.Vague = input.Vague
@@ -30,7 +30,7 @@ func (usecase *parkUsecase) RegistreNewPark(input ParkDtoInput) (ParkDtoOutput, 
 
 }
 
-func (usecase *parkUsecase) parkActived(park ParkDtoInput) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkActived(park *ParkDtoInput) (ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, true)
 	if err != nil {
 		return ParkDtoOutput{}, err
@@ -44,7 +44,7 @@ func (usecase *parkUsecase) parkActived(park ParkDtoInput) (ParkDtoOutput, error
 	return parkOutput, nil
 }
 
-func (usecase *parkUsecase) parkNotActived(park ParkDtoInput, parkinvalid error) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkNotActived(park *ParkDtoInput, parkinvalid error) (ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, false)
 	if err != nil {
 		return ParkDtoOutput{}, err
