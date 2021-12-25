@@ -1,0 +1,9 @@
+POST http://localhost:9000/park
+Content-Type: application/json
+
+{
+    "name": "Viana park",
+    "vague": "15",
+    "limit": "20"
+
+}

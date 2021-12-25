@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/controllers/interfaces"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/presenter"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities/repository"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
@@ -14,8 +15,8 @@ type ParkController struct {
 	repository  repository.ParkRepositoryInterface
 }
 
-func NewParkController(parkUsecase usecase.ParkUsecaseInterface) *ParkController {
-	return &ParkController{parkUsecase: parkUsecase}
+func NewParkController(pUsecase usecase.ParkUsecaseInterface) interfaces.ParkControllerInterface {
+	return &ParkController{parkUsecase: pUsecase}
 }
 
 func (c *ParkController) Welcome(ctx presenter.ParkRestPresenterContext) error {
