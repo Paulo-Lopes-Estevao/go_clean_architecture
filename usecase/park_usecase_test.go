@@ -31,7 +31,7 @@ func TestNewParkActived(t *testing.T) {
 
 	usecasePark := usecase.NewParkUsecase(repositoryMockPark)
 
-	outputPark, err := usecasePark.RegistreNewPark(input)
+	outputPark, err := usecasePark.RegistreNewPark(&input)
 	assert.Nil(t, err, err)
 	assert.Equal(t, outputExpected, outputPark)
 
@@ -59,7 +59,7 @@ func TestNewParkNotActivedLowerLimit(t *testing.T) {
 
 	usecasePark := usecase.NewParkUsecase(repositoryMockPark)
 
-	outputPark, err := usecasePark.RegistreNewPark(input)
+	outputPark, err := usecasePark.RegistreNewPark(&input)
 	assert.Nil(t, err, err)
 	assert.Equal(t, outputExpected, outputPark)
 
@@ -87,7 +87,7 @@ func TestNewParkNotActivedVagueUpperLimit(t *testing.T) {
 
 	usecasePark := usecase.NewParkUsecase(repositoryMockPark)
 
-	outputPark, err := usecasePark.RegistreNewPark(input)
+	outputPark, err := usecasePark.RegistreNewPark(&input)
 	assert.Nil(t, err, err)
 	assert.Equal(t, outputExpected, outputPark)
 
@@ -115,7 +115,7 @@ func TestNewParkNotActivedVagueInvalid(t *testing.T) {
 
 	usecasePark := usecase.NewParkUsecase(repositoryMockPark)
 
-	outputPark, err := usecasePark.RegistreNewPark(input)
+	outputPark, err := usecasePark.RegistreNewPark(&input)
 	assert.Nil(t, err, err)
 	assert.Equal(t, outputExpected, outputPark)
 
