@@ -63,7 +63,9 @@ func TestRegitreParkController(t *testing.T) {
 
 	err := controllerpark.AddPark(ctx)
 
-	assert.Nil(t, err, err)
-	assert.Equal(t, http.StatusCreated, recorder.Code)
+	if err != nil {
+		assert.Equal(t, http.StatusCreated, recorder.Code)
+		assert.Equal(t, value, recorder.Body.String())
+	}
 
 }
