@@ -1,4 +1,4 @@
-package handler
+package routes
 
 import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/injection"
