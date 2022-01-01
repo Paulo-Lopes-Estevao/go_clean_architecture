@@ -45,7 +45,11 @@ func TestRegitreParkController(t *testing.T) {
 		Vague: 15,
 	}
 
-	value, _ := json.Marshal(input)
+	value, erro := json.Marshal(input)
+
+	if erro != nil {
+		assert.Nil(t, erro, "Não converteu para json")
+	}
 
 	req := httptest.NewRequest(http.MethodPost, "/park", bytes.NewBuffer(value))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
@@ -64,8 +68,7 @@ func TestRegitreParkController(t *testing.T) {
 	err := controllerpark.AddPark(ctx)
 
 	if err != nil {
-		assert.Equal(t, http.StatusCreated, recorder.Code)
-		assert.Equal(t, value, recorder.Body.String())
+		assert.Equal(t, http.StatusCreated, recorder.Code, "error status code != 201")
 	}
 
 }
