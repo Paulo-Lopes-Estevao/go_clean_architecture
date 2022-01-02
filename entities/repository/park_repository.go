@@ -1,5 +1,5 @@
 package repository
 
 type ParkRepositoryInterface interface {
-	Registre(Name string, Vague int32, Limit int32, Status bool) error
+	Registre(name string, vague int32, limit int32, status bool) error
 }
