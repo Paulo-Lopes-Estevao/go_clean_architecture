@@ -60,6 +60,9 @@ func TestRegitreParkController(t *testing.T) {
 	defer controllerMock.Finish()
 
 	repositoryMockPark := repository_mock.NewMockParkRepository(controllerMock)
+	repositoryMockPark.EXPECT().
+		Registre(input.Name, input.Limit, input.Vague, true).
+		Return(nil)
 
 	usecasepark := usecase.NewParkUsecase(repositoryMockPark)
 
