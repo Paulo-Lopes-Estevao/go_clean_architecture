@@ -28,13 +28,13 @@ var input dto.ParkDtoInput
 func (c *ParkController) AddPark(ctx presenter.ParkRestPresenterContext) error {
 
 	if err := ctx.Bind(&input); !errors.Is(err, nil) {
-		ctx.JSON(http.StatusBadRequest, presenter.ResponseData(map[string]interface{}{"error": err.Error()}))
+		return ctx.JSON(http.StatusBadRequest, presenter.ResponseData(map[string]interface{}{"error": err.Error()}))
 	}
 
 	output, err := c.parkUsecase.RegistreNewPark(&input)
 
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, err)
+		return ctx.JSON(http.StatusInternalServerError, err)
 	}
 
 	return ctx.JSON(http.StatusCreated, output)
