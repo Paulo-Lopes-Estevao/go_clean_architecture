@@ -3,21 +3,19 @@ package usecase
 import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities/repository"
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/dto"
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/interfaces"
 )
-
-type ParkUsecaseInterface interface {
-	RegistreNewPark(input *ParkDtoInput) (ParkDtoOutput, error)
-}
 
 type parkUsecase struct {
 	repository repository.ParkRepositoryInterface
 }
 
-func NewParkUsecase(repo repository.ParkRepositoryInterface) ParkUsecaseInterface {
+func NewParkUsecase(repo repository.ParkRepositoryInterface) interfaces.ParkUsecaseInterface {
 	return &parkUsecase{repository: repo}
 }
 
-func (usecase *parkUsecase) RegistreNewPark(input *ParkDtoInput) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) RegistreNewPark(input *dto.ParkDtoInput) (dto.ParkDtoOutput, error) {
 	park := entities.NewPark()
 	park.Park.Name = input.Name
 	park.Vague = input.Vague
@@ -30,13 +28,13 @@ func (usecase *parkUsecase) RegistreNewPark(input *ParkDtoInput) (ParkDtoOutput,
 
 }
 
-func (usecase *parkUsecase) parkActived(park *ParkDtoInput) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkActived(park *dto.ParkDtoInput) (dto.ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, true)
 	if err != nil {
-		return ParkDtoOutput{}, err
+		return dto.ParkDtoOutput{}, err
 	}
 
-	parkOutput := ParkDtoOutput{
+	parkOutput := dto.ParkDtoOutput{
 		Status:       true,
 		ErrorMessage: "",
 	}
@@ -44,13 +42,13 @@ func (usecase *parkUsecase) parkActived(park *ParkDtoInput) (ParkDtoOutput, erro
 	return parkOutput, nil
 }
 
-func (usecase *parkUsecase) parkNotActived(park *ParkDtoInput, parkinvalid error) (ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkNotActived(park *dto.ParkDtoInput, parkinvalid error) (dto.ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, false)
 	if err != nil {
-		return ParkDtoOutput{}, err
+		return dto.ParkDtoOutput{}, err
 	}
 
-	parkOutput := ParkDtoOutput{
+	parkOutput := dto.ParkDtoOutput{
 		Status:       false,
 		ErrorMessage: parkinvalid.Error(),
 	}
