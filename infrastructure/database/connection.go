@@ -1,28 +1,29 @@
 package database
 
 import (
+	"fmt"
+
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/infrastructure/database/models"
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
-const DB_USERNAME = "postgres"
-const DB_PASSWORD = "postgres"
-const DB_NAME = "db_lubre"
-const DB_HOST = "localhost"
-const DB_PORT = "5432"
+func ConnectionDB() {
 
-func ConnectionDB() *gorm.DB {
-
-	dsn := "host=" + DB_HOST + " user=" + DB_USERNAME + " password=" + DB_PASSWORD + " dbname=" + DB_NAME + " port=" + DB_PORT + " sslmode=disable"
-
-	db, err := gorm.Open("postgres", dsn)
+	db, err := gorm.Open("sqlite3", "lumbre.db")
 
 	if err != nil {
-		defer db.Close()
+
 		panic("failed to connect database")
 
 	}
 
-	return db
+	defer db.Close()
+
+	fmt.Println("Connection Opened to Database")
+
+	db.AutoMigrate(&models.ParkVague{})
+
+	fmt.Println("Database Migrated")
 
 }
