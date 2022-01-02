@@ -5,18 +5,19 @@ import (
 
 	repository_mock "github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities/repository/mock"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/dto"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestNewParkActived(t *testing.T) {
-	input := usecase.ParkDtoInput{
+	input := dto.ParkDtoInput{
 		Name:  "Viana Park",
 		Limit: 20,
 		Vague: 15,
 	}
 
-	outputExpected := usecase.ParkDtoOutput{
+	outputExpected := dto.ParkDtoOutput{
 		Status:       true,
 		ErrorMessage: "",
 	}
@@ -38,13 +39,13 @@ func TestNewParkActived(t *testing.T) {
 }
 
 func TestNewParkNotActivedLowerLimit(t *testing.T) {
-	input := usecase.ParkDtoInput{
+	input := dto.ParkDtoInput{
 		Name:  "Viana Park",
 		Limit: 4,
 		Vague: 15,
 	}
 
-	outputExpected := usecase.ParkDtoOutput{
+	outputExpected := dto.ParkDtoOutput{
 		Status:       false,
 		ErrorMessage: "very lower limit",
 	}
@@ -66,13 +67,13 @@ func TestNewParkNotActivedLowerLimit(t *testing.T) {
 }
 
 func TestNewParkNotActivedVagueUpperLimit(t *testing.T) {
-	input := usecase.ParkDtoInput{
+	input := dto.ParkDtoInput{
 		Name:  "Viana Park",
 		Limit: 10,
 		Vague: 15,
 	}
 
-	outputExpected := usecase.ParkDtoOutput{
+	outputExpected := dto.ParkDtoOutput{
 		Status:       false,
 		ErrorMessage: "vague upper limit",
 	}
@@ -94,13 +95,13 @@ func TestNewParkNotActivedVagueUpperLimit(t *testing.T) {
 }
 
 func TestNewParkNotActivedVagueInvalid(t *testing.T) {
-	input := usecase.ParkDtoInput{
+	input := dto.ParkDtoInput{
 		Name:  "Viana Park",
 		Limit: 10,
 		Vague: 2,
 	}
 
-	outputExpected := usecase.ParkDtoOutput{
+	outputExpected := dto.ParkDtoOutput{
 		Status:       false,
 		ErrorMessage: "vague inválid",
 	}

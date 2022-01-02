@@ -9,6 +9,7 @@ import (
 
 	repository_mock "github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities/repository/mock"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/dto"
 	"github.com/golang/mock/gomock"
 	"github.com/labstack/echo/v4"
 	"github.com/likexian/gokit/assert"
@@ -39,7 +40,7 @@ func TestWelcomeController(t *testing.T) {
 func TestRegitreParkController(t *testing.T) {
 	e := echo.New()
 
-	input := usecase.ParkDtoInput{
+	input := dto.ParkDtoInput{
 		Name:  "Viana Park",
 		Limit: 20,
 		Vague: 15,

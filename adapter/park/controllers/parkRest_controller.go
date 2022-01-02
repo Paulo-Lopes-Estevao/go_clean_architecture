@@ -6,14 +6,15 @@ import (
 
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/controllers/interfaces"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/presenter"
-	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
+	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/dto"
+	interfaceUsecase "github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/interfaces"
 )
 
 type ParkController struct {
-	parkUsecase usecase.ParkUsecaseInterface
+	parkUsecase interfaceUsecase.ParkUsecaseInterface
 }
 
-func NewParkController(pUsecase usecase.ParkUsecaseInterface) interfaces.ParkControllerInterface {
+func NewParkController(pUsecase interfaceUsecase.ParkUsecaseInterface) interfaces.ParkControllerInterface {
 	return &ParkController{parkUsecase: pUsecase}
 }
 
@@ -22,7 +23,7 @@ func (c *ParkController) Welcome(ctx presenter.ParkRestPresenterContext) error {
 	return ctx.JSON(http.StatusOK, "... Welcome API REST")
 }
 
-var input usecase.ParkDtoInput
+var input dto.ParkDtoInput
 
 func (c *ParkController) AddPark(ctx presenter.ParkRestPresenterContext) error {
 
