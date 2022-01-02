@@ -1,4 +1,4 @@
-package usecase
+package dto
 
 type ParkDtoInput struct {
 	Name  string  `json:"name"`
