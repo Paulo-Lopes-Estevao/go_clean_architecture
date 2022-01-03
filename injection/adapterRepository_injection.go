@@ -2,7 +2,7 @@ package injection
 
 import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/injection/interfaces"
-	"gorm.io/gorm"
+	"github.com/jinzhu/gorm"
 )
 
 type repositoryAdapter struct {

@@ -1,10 +1,8 @@
 package repository
 
 import (
-	"fmt"
-
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/infrastructure/database/models"
-	"gorm.io/gorm"
+	"github.com/jinzhu/gorm"
 )
 
 type repositorydb struct {
@@ -22,8 +20,8 @@ func (repodb *repositorydb) Registre(name string, vague int32, limit int32, stat
 		Vague: vague,
 		Limit: limit,
 	}
-	fmt.Println(&data, status)
-	err := repodb.Db.Create(data).Error
+
+	err := repodb.Db.Create(&data).Error
 
 	if err != nil {
 		return err
