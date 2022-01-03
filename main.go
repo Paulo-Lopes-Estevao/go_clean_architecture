@@ -7,15 +7,14 @@ import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/infrastructure/database"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/injection"
 	"github.com/labstack/echo/v4"
-	"gorm.io/gorm"
 )
 
 func main() {
 
 	server := echo.New()
 
-	database.ConnectionDB()
-	i := injection.NewRegistry(&gorm.DB{})
+	db := database.ConnectionDB()
+	i := injection.NewRegistry(db)
 
 	routes.ParkRoute(server, i.NewAppController())
 
