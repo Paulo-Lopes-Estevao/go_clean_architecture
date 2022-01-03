@@ -3,8 +3,8 @@ package injection
 import (
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/controllers"
 	interfacesController "github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/controllers/interfaces"
+	repo "github.com/Paulo-Lopes-Estevao/go_clean_architecture/adapter/park/repository"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/entities/repository"
-	repo "github.com/Paulo-Lopes-Estevao/go_clean_architecture/infrastructure/database/repository"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase"
 	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/usecase/interfaces"
 )
@@ -18,5 +18,5 @@ func (i *repositoryAdapter) NewRestController() interfacesController.ParkControl
 }
 
 func (i *repositoryAdapter) NewRestRepository() repository.ParkRepositoryInterface {
-	return repo.NewRegistreParkRepository(i.DB)
+	return repo.NewRepositoryFactory(i.DB).CreateRegistryPark()
 }
