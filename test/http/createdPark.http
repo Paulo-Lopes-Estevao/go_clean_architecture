@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name": "Viana park",
-    "vague": "15",
-    "limit": "20"
+    "vague": 15,
+    "limit": 20
 
 }
