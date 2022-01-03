@@ -22,14 +22,14 @@ func (usecase *parkUsecase) RegistreNewPark(input *dto.ParkDtoInput) (dto.ParkDt
 	park.Limit = input.Limit
 	err := park.IsValidLimitPark()
 	if err != nil {
-		return usecase.parkNotActived(input, err)
+		return usecase.parkNotActived(park, err)
 	}
-	return usecase.parkActived(input)
+	return usecase.parkActived(park)
 
 }
 
-func (usecase *parkUsecase) parkActived(park *dto.ParkDtoInput) (dto.ParkDtoOutput, error) {
-	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, true)
+func (usecase *parkUsecase) parkActived(park *entities.ParkVague) (dto.ParkDtoOutput, error) {
+	err := usecase.repository.Registre(park.Park.Name, park.Limit, park.Vague, true)
 	if err != nil {
 		return dto.ParkDtoOutput{}, err
 	}
@@ -42,8 +42,8 @@ func (usecase *parkUsecase) parkActived(park *dto.ParkDtoInput) (dto.ParkDtoOutp
 	return parkOutput, nil
 }
 
-func (usecase *parkUsecase) parkNotActived(park *dto.ParkDtoInput, parkinvalid error) (dto.ParkDtoOutput, error) {
-	err := usecase.repository.Registre(park.Name, park.Limit, park.Vague, false)
+func (usecase *parkUsecase) parkNotActived(park *entities.ParkVague, parkinvalid error) (dto.ParkDtoOutput, error) {
+	err := usecase.repository.Registre(park.Park.Name, park.Limit, park.Vague, false)
 	if err != nil {
 		return dto.ParkDtoOutput{}, err
 	}
