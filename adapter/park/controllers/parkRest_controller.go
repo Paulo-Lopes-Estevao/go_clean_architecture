@@ -34,7 +34,7 @@ func (c *ParkController) AddPark(ctx presenter.ParkRestPresenterContext) error {
 	output, err := c.parkUsecase.RegistreNewPark(&input)
 
 	if err != nil {
-		return ctx.JSON(http.StatusInternalServerError, err)
+		return ctx.JSON(http.StatusBadRequest, err)
 	}
 
 	return ctx.JSON(http.StatusCreated, output)
