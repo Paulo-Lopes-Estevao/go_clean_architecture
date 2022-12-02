@@ -25,11 +25,11 @@ func light() *CarPark {
 }
 
 func NewTypeVehicle(typecar string) (*CarPark, error) {
-	if typecar == "pesado" {
+	if typecar == "heavy" {
 		return heavy(), nil
 	}
 
-	if typecar == "ligeiro" {
+	if typecar == "slight" {
 		return light(), nil
 	}
 	return nil, fmt.Errorf("type of car does not exist")
