@@ -15,6 +15,6 @@ func NewRepositoryFactory(db *gorm.DB) interfaces.RepositoryFactoryInterface {
 	return &RepositoryFactory{DB: db}
 }
 
-func (f RepositoryFactory) CreateRegistryPark() repo.ParkRepositoryInterface {
+func (f RepositoryFactory) RegistryPark() repo.ParkRepositoryInterface {
 	return repository.NewRegistreParkRepository(f.DB)
 }

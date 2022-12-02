@@ -18,5 +18,5 @@ func (i *repositoryAdapter) NewRestController() interfacesController.ParkControl
 }
 
 func (i *repositoryAdapter) NewRestRepository() repository.ParkRepositoryInterface {
-	return repo.NewRepositoryFactory(i.DB).CreateRegistryPark()
+	return repo.NewRepositoryFactory(i.DB).RegistryPark()
 }

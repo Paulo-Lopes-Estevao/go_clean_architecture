@@ -11,7 +11,7 @@ import (
 func TestCreatePark(t *testing.T) {
 	db := database.ConnectionDB()
 	repositories := repository.NewRepositoryFactory(db)
-	err := repositories.CreateRegistryPark().
+	err := repositories.RegistryPark().
 		Registre("Viana Park", 10, 15, true)
 
 	if err != nil {
