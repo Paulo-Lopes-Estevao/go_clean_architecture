@@ -7,11 +7,11 @@ import (
 )
 
 func TestNewVehicleofheavy(t *testing.T) {
-	_, err := NewTypeVehicle("pesado")
+	_, err := NewTypeVehicle("heavy")
 	assert.Nil(t, err, err)
 }
 
 func TestNewVehicleoflight(t *testing.T) {
-	_, err := NewTypeVehicle("ligeiro")
+	_, err := NewTypeVehicle("slight")
 	assert.Nil(t, err, err)
 }
