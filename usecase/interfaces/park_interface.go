@@ -5,5 +5,5 @@ import (
 )
 
 type ParkUsecaseInterface interface {
-	RegistreNewPark(input *dto.ParkDtoInput) (dto.ParkDtoOutput, error)
+	RegistreNewPark(input *dto.ParkDtoInput) (*dto.ParkDtoOutput, error)
 }
