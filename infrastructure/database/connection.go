@@ -13,7 +13,6 @@ func ConnectionDB() *gorm.DB {
 	db, err := gorm.Open("sqlite3", "lumbre.db")
 
 	if err != nil {
-		defer db.Close()
 		panic("failed to connect database")
 
 	}
