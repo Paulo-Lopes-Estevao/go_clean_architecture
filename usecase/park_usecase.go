@@ -15,7 +15,7 @@ func NewParkUsecase(repo repository.ParkRepositoryInterface) interfaces.ParkUsec
 	return &parkUsecase{repository: repo}
 }
 
-func (usecase *parkUsecase) RegistreNewPark(input *dto.ParkDtoInput) (dto.ParkDtoOutput, error) {
+func (usecase *parkUsecase) RegistreNewPark(input *dto.ParkDtoInput) (*dto.ParkDtoOutput, error) {
 	park := entities.NewPark()
 	park.Park.Name = input.Name
 	park.Vague = input.Vague
@@ -28,13 +28,13 @@ func (usecase *parkUsecase) RegistreNewPark(input *dto.ParkDtoInput) (dto.ParkDt
 
 }
 
-func (usecase *parkUsecase) parkActived(park *entities.ParkVague) (dto.ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkActived(park *entities.ParkVague) (*dto.ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Park.Name, park.Limit, park.Vague, true)
 	if err != nil {
-		return dto.ParkDtoOutput{}, err
+		return nil, err
 	}
 
-	parkOutput := dto.ParkDtoOutput{
+	parkOutput := &dto.ParkDtoOutput{
 		Status:       true,
 		ErrorMessage: "",
 	}
@@ -42,13 +42,13 @@ func (usecase *parkUsecase) parkActived(park *entities.ParkVague) (dto.ParkDtoOu
 	return parkOutput, nil
 }
 
-func (usecase *parkUsecase) parkNotActived(park *entities.ParkVague, parkinvalid error) (dto.ParkDtoOutput, error) {
+func (usecase *parkUsecase) parkNotActived(park *entities.ParkVague, parkinvalid error) (*dto.ParkDtoOutput, error) {
 	err := usecase.repository.Registre(park.Park.Name, park.Limit, park.Vague, false)
 	if err != nil {
-		return dto.ParkDtoOutput{}, err
+		return nil, err
 	}
 
-	parkOutput := dto.ParkDtoOutput{
+	parkOutput := &dto.ParkDtoOutput{
 		Status:       false,
 		ErrorMessage: parkinvalid.Error(),
 	}
