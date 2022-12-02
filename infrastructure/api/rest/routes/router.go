@@ -1,15 +1,14 @@
 package routes
 
 import (
-	"github.com/Paulo-Lopes-Estevao/go_clean_architecture/injection/interfaces"
 	"github.com/labstack/echo/v4"
 )
 
-func ParkRoute(e *echo.Echo, injection interfaces.ControllerAdapter) *echo.Echo {
+func (r *router) ParkRouter() *echo.Echo {
 
-	e.GET("/", func(context echo.Context) error { return injection.Park.Welcome(context) })
-	e.POST("/park", func(context echo.Context) error { return injection.Park.AddPark(context) })
+	r.echo.GET("", func(context echo.Context) error { return r.IParkController.Welcome(context) })
+	r.echo.POST("/park", func(context echo.Context) error { return r.IParkController.AddPark(context) })
 
-	return e
+	return r.echo
 
 }
