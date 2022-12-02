@@ -14,6 +14,8 @@ func main() {
 	server := echo.New()
 
 	db := database.ConnectionDB()
+	defer db.Close()
+
 	i := injection.NewRegistry(db)
 
 	routes.ParkRoute(server, i.NewAppController())
